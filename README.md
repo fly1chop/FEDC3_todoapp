@@ -1,16 +1,11 @@
 
 # Todo App w/ Vanilla js
-A simple todo list application featuring `fetch` and `history` API with pure vanilla javaScript 🍦
+A simple todo list SPA featuring `fetch` and `history` API with pure vanilla javaScript 🍦
 
 ## Features
-- Fetch todo list by user
+- Fetch todo list by selected user
 - Add/delete todos and saved to user
-
-## API Reference
-#### URL
-```http
- https://kdt-frontend.todo-api.programmers.co.kr/users
-```
+- Add new user
 
 #### Data structure
 ```javascript
@@ -19,16 +14,6 @@ A simple todo list application featuring `fetch` and `history` API with pure van
   "content": 할 일 text,
   "isCompleted": 할 일의 완료여부
 }
-```
-
-#### Get User
-```javascript
-  fetch('https://kdt-frontend.todo-api.programmers.co.kr/users').then()...
-```
-
-#### Get Todo List
-```javascript
-  fetch('https://kdt-frontend.todo-api.programmers.co.kr/username').then()...
 ```
 
 ## Architecture
@@ -41,25 +26,19 @@ A simple todo list application featuring `fetch` and `history` API with pure van
 - [ ]  onClick, toggle todo completed status
 
 ### TodoForm
-- [ ]  Fetch selected user's todo list from API
-- [ ]  Add/Delete todos
-- [ ]  onClick, strike through for completed todo
+- [ ]  Render input form
+- [ ]  Block during initial user's todo list
+- [ ]  Local store input value until submit 
 
 ### UserList
-- [ ]  Fetch selected user's todo list from API
-- [ ]  Add/Delete todos
-- [ ]  onClick, strike through for completed todo
+- [ ]  Fetch list of users from API
+- [ ]  Render user's todo list onSelect
+- [ ]  Add new username
+  - If new user, render user list after first todo added
 
-- Fetch user's todo list from API
-- Add/Delete todos with optimistic update
-- block input field during loading -> during loading, if user adds new item, it will collide with server information
-- saving input value (in case it was not fully saved in server) using localStorage
-  - due to disabling input during initialization, addeventlistener does not work -> disabled elements don't fire mouse events
-  -> take out disabling action into separate function outside of init() render.
-  
-  (https://stackoverflow.com/questions/3100319/event-on-a-disabled-input)
-  (https://blog.pengoworks.com/index.cfm/2010/4/23/Attaching-mouse-events-to-a-disabled-input-element)
-
-- fetch 2nd api -> user list
-  - if new user is added, userlist is not updated until todo item is added and then refresh page
-  -> isFirstTodoAdd added
+## What I learned
+#### Optimistic update
+- Applied optimistic UI update during asynchronous fetch API calls for improved experience
+- If user tries to add new todo item while loading, server information will collide with optimistic UI;
+  - Disabled input form during initial user's todo list render;
+  - However, I ran into a small challenge where disabled elements aren't listened for event fires; therefore, I extracted this process into a separate function and rendered after initial state change
