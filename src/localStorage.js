@@ -3,7 +3,6 @@ const storage = window.localStorage
 export const setItem = (key, value) => {
   try {
     storage.setItem(key, JSON.stringify(value));
-    console.log(key, value);
   } catch(e) {
     console.error(e)
   }
@@ -12,7 +11,6 @@ export const setItem = (key, value) => {
 export const getItem = (key, defaultValue) => {
   try {
     const storedValue = storage.getItem(key);
-    console.log(storedValue)
 
     if(!storedValue) return defaultValue;
 
