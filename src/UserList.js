@@ -13,7 +13,7 @@ export default function UserList({ $target, initialState, onSelect }) {
   this.render = () => {
     $userList.innerHTML = `
       <h1>Users</h1>
-      <ul>
+      <ul style="height: 250px; overflow: auto">
         ${this.state.map((username) => `<li data-username="${username}">${username}</li>`).join("")}
         <form>
           <input class="new-user" type="text" placeholder="add user" />
