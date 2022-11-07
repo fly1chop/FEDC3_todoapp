@@ -11,8 +11,14 @@ export default function Header({ $target, initialState }) {
 
   this.render = () => {
     const { username, isLoading } = this.state;
+    
+    if(!username) {
+      $header.innerHTML = '';
+      return
+    }
+    
     $header.innerHTML = 
-    `<h1>${username[0].toUpperCase() + username.slice(1)}'s Todo List ${isLoading ? 'is loading...⏳' : ''}</h1>`
+    `<h2>${username[0].toUpperCase() + username.slice(1)}'s Todo List ${isLoading ? 'is loading...⏳' : ''}</h2>`
   }
 
   this.render();

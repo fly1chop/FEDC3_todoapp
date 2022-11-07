@@ -59,3 +59,7 @@ A simple todo list application featuring `fetch` and `history` API with pure van
   
   (https://stackoverflow.com/questions/3100319/event-on-a-disabled-input)
   (https://blog.pengoworks.com/index.cfm/2010/4/23/Attaching-mouse-events-to-a-disabled-input-element)
+
+- fetch 2nd api -> user list
+  - if new user is added, userlist is not updated until todo item is added and then refresh page
+  -> isFirstTodoAdd added
